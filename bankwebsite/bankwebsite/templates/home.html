@@ -1,0 +1,44 @@
+{% load static %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">My Bank</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="login">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="register">Register</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Branches
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kannur">Kannur</a></li>
+            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Wayanad">Wayanad </a></li>
+            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kozhikode">Kozhikode</a></li>
+            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Trivandrum">Trivandrum</a></li>
+            <li><a class="dropdown-item" href="https://en.wikipedia.org/wiki/Kottayam<">Kottayam<</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div>
+<img class="my_image my_image_padding" src="{% static 'img/city bank.jpg' %}"  alt="our products" width="1500px;" height="500px;">
+</div>
+<br>
+<div class="container">
+    <p class="text-justify">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc. bkvbkknbiif</p>
+</div>
+{% endblock %}
+

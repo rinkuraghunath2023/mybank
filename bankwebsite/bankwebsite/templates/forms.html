@@ -1,0 +1,101 @@
+{% load static %}
+
+{% block content %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration Form</title>
+</head>
+<body>
+
+<form action="lastpage" method="post" id="personForm" >
+    {% csrf_token %}
+    <input type="text" name="name" placeholder="enter name"><br>
+    <input type="date" name="date_of_birth" placeholder="enter DOB"><br>
+    <input type="number" name="age" placeholder="enter age"><br>
+    <input type="text" name="gender" placeholder="enter gender"><br>
+    <input type="number" name="phone_number" placeholder="enter phone number"><br>
+    <input type="email" name="email" placeholder="enter email id"><br>
+    <input type="text" name="address" placeholder="enter address"><br>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Event listener for the district dropdown
+            $('#id_district').change(function() {
+                var district = $(this).val();
+
+                // Clear the cities dropdown
+                $('#id_city').empty();
+
+                // If a district is selected
+                if (district) {
+                    $.ajax({
+                        url: '/get_cities/',
+                        data: {
+                            'district': district
+                        },
+                        success: function(data) {
+                            // If cities are returned
+                            if (data.cities) {
+                                $.each(data.cities, function(key, value) {
+                                    $('#id_city').append('<option value="' + value + '">' + value + '</option>');
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+<!--    <form>-->
+        <label for="id_district"><b>District:</b></label>
+        <select name="district" id="id_district">
+            <option value="">-- Select a District --</option>
+            <option value="Kannur">Kannur</option>
+            <option value="Wayanad">Wayanad</option>
+            <option value="Kozhikode">Kozhikode</option>
+            <option value="Trivandrum">Trivandrum</option>
+            <option value="Kottayam">Kottayam</option>
+        </select><br>
+
+        <label for="id_city"><b>City:</b></label>
+        <select name="city" id="id_city">
+            <option value="">-- Select a city --</option>
+        </select>
+<!--    </form>-->
+
+      <br>
+    <label><b>Account Types</b></label><br>
+     <label>savings account</label>
+    <input type="radio" name="savings account"><br>
+     <label>current account</label>
+    <input type="radio" name="current account"><br>
+     <label>salary account</label>
+    <input type="radio" name="salary account"><br>
+    <label><b>Materials Provided</b></label><br>
+    <label>Debit card</label>
+    <input type="radio" name="Debit card" ><br>
+     <label>Credit card</label>
+    <input type="radio" name="Credit card" ><br>
+     <label>Cheque book</label>
+    <input type="radio" name="Cheque book"><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+
+
+
+</body>
+</html>
+
+{% endblock %}
